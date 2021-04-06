@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using FMODUnity;
 
 public class TileManagerScript : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class TileManagerScript : MonoBehaviour
     public GameObject startUI;
     public GameObject dayUI;
     public GameObject feedbackUI;
-    public AudioSource pop;
+   
     //public GameObject tileKind;
 
     //public List<Vector3> availablePlaces;
@@ -33,11 +34,18 @@ public class TileManagerScript : MonoBehaviour
 
     public Vector3Int pos;
     // Start is called before the first frame update
+
+    //FMOD
+    [SerializeField, EventRef] public string popEvent;
+
+
     void Start()
     {
         currentBase = dirt;
         dayUI.SetActive(false);
         feedbackUI.SetActive(false);
+
+        //popSound.SetActive(false);
     }
 
     // Update is called once per frame
@@ -115,7 +123,7 @@ public class TileManagerScript : MonoBehaviour
     public void ChangeTypeInt(int newType)
     {
         type = newType;
-        pop.Play();
+        RuntimeManager.PlayOneShot("popEvent", cam.transform.position);
     }
 
     public void AssignScript()

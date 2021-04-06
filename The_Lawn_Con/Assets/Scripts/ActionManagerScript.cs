@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using FMODUnity;
 
 public class ActionManagerScript : TileManagerScript
 {
@@ -52,6 +53,11 @@ public class ActionManagerScript : TileManagerScript
 
     //private string highestAction;
     //private string secondAction;
+
+    //FMOD
+    [SerializeField, EventRef] public string waterEvent;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -240,6 +246,7 @@ public class ActionManagerScript : TileManagerScript
 
                         envPoints += 5;
                         waterPoints -= 5;
+                        RuntimeManager.PlayOneShot("waterEvent", cam.transform.position);
                     }
                     else if (currentAction == "herb/pest")
                     {
@@ -381,7 +388,7 @@ public class ActionManagerScript : TileManagerScript
         actionSelected = true;
         //text.text = "Action changed to " + currentAction;
         Debug.Log("action changed to " + currentAction);
-        pop.Play();
+        //pop.Play();
     }
 
     public void CancelAction()
@@ -389,7 +396,7 @@ public class ActionManagerScript : TileManagerScript
         currentAction = "None";
         actionSelected = false;
         Debug.Log("action turned off");
-        pop.Play();
+        //pop.Play();
     }
 
     //Quit Game Things
