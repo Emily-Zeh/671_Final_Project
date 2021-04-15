@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using FMODUnity;
 
 public class ActionManager : TileManagerScript
 {
@@ -59,7 +60,8 @@ public class ActionManager : TileManagerScript
                         {
                             envPoints += 50;
                             moneyPoints -= 10;
-                        }
+                            
+                    }
                         else if (currentAction == "herb/pest")
                         {
                             envPoints -= 100;

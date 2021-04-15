@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using FMODUnity;
 
 
 public class TileInfoScript : MonoBehaviour
@@ -52,6 +53,13 @@ public class TileInfoScript : MonoBehaviour
     [SerializeField] public int flowerTiles;
     [SerializeField] public int wildGrassTiles;
 
+    //FMOD
+    [SerializeField, EventRef] public string waterEvent;
+    [SerializeField, EventRef] public string mowEvent;
+    [SerializeField, EventRef] public string weedEvent;
+    [SerializeField, EventRef] public string fertilizeEvent;
+    [SerializeField, EventRef] public string sprayEvent;
+    [SerializeField, EventRef] public string infoEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -129,6 +137,12 @@ public class TileInfoScript : MonoBehaviour
         {
             string temp = tileMap.GetTile(gridPos).name;
             Debug.Log("found tile for info");
+
+            if(actionManager.currentAction == "None")
+            {
+                RuntimeManager.PlayOneShot(infoEvent, cam.transform.position);
+            }
+            
 
             if (temp == "Dirt")
             {
@@ -238,6 +252,8 @@ public class TileInfoScript : MonoBehaviour
             {
                 grassWaterLevel = 5;
                 Debug.Log("Water effect on grass");
+
+                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
             }
             else if(action == "weed")
             {

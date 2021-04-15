@@ -55,7 +55,7 @@ public class ActionManagerScript : TileManagerScript
     //private string secondAction;
 
     //FMOD
-    [SerializeField, EventRef] public string waterEvent;
+    [SerializeField, EventRef] public string clockEvent;
 
 
 
@@ -246,7 +246,7 @@ public class ActionManagerScript : TileManagerScript
 
                         envPoints += 5;
                         waterPoints -= 5;
-                        RuntimeManager.PlayOneShot("waterEvent", cam.transform.position);
+                        //RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
                     }
                     else if (currentAction == "herb/pest")
                     {
@@ -294,6 +294,7 @@ public class ActionManagerScript : TileManagerScript
                     if (actionNum % 2 == 1)
                     {
                         tileInfo.dayChange = true;
+                        RuntimeManager.PlayOneShot(clockEvent, cam.transform.position);
                     }
                         
                 }

@@ -37,6 +37,8 @@ public class TileManagerScript : MonoBehaviour
 
     //FMOD
     [SerializeField, EventRef] public string popEvent;
+    [SerializeField, EventRef] public string changeEvent;
+
 
 
     void Start()
@@ -103,7 +105,7 @@ public class TileManagerScript : MonoBehaviour
                     Debug.LogError("Invalid Type Index");
                     break;
             }
-            
+            RuntimeManager.PlayOneShot(changeEvent, cam.transform.position);
             tileMap.RefreshAllTiles();
         }
     }
@@ -123,7 +125,7 @@ public class TileManagerScript : MonoBehaviour
     public void ChangeTypeInt(int newType)
     {
         type = newType;
-        RuntimeManager.PlayOneShot("popEvent", cam.transform.position);
+        //RuntimeManager.PlayOneShot(popEvent, cam.transform.position);
     }
 
     public void AssignScript()
