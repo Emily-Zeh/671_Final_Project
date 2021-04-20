@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Click_Button
+  Event: event:/Sound Effects/click_button
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
