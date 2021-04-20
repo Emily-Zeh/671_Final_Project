@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/Click_Button
+  Event: event:/Sound Effects/click_button
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
@@ -3751,12 +3751,12 @@ MonoBehaviour:
   mossTiles: 0
   flowerTiles: 0
   wildGrassTiles: 0
-  waterEvent: event:/watering
-  mowEvent: event:/mowing
-  weedEvent: event:/weeding
-  fertilizeEvent: event:/fertilizing
-  sprayEvent: event:/spraying
-  infoEvent: event:/select_tile
+  waterEvent: event:/Sound Effects/watering
+  mowEvent: event:/Sound Effects/mowing
+  weedEvent: event:/Sound Effects/weeding
+  sprayEvent: event:/Sound Effects/spraying
+  infoEvent: event:/Sound Effects/select_tile
+  amount: 2.04
 --- !u!4 &884267949
 Transform:
   m_ObjectHideFlags: 0
@@ -5145,8 +5145,8 @@ MonoBehaviour:
   start: 1
   type: 0
   pos: {x: 0, y: 0, z: 0}
-  popEvent: event:/Click_Button
-  changeEvent: 
+  popEvent: event:/Sound Effects/click_button
+  changeEvent: event:/Sound Effects/click_button
   tileInfo: {fileID: 884267948}
   envPoints: 0
   appealPoints: 0
@@ -5166,7 +5166,8 @@ MonoBehaviour:
   actionNum: 0
   finalCheck: 1
   scoreIcons: {fileID: 846652941}
-  clockEvent: event:/clock
+  clockEvent: event:/Sound Effects/clock
+  fertilizeEvent: event:/Sound Effects/fertilizing
 --- !u!1 &1245761833
 GameObject:
   m_ObjectHideFlags: 0
@@ -7989,8 +7990,8 @@ MonoBehaviour:
   start: 1
   type: 0
   pos: {x: 0, y: 0, z: 0}
-  popEvent: event:/Click_Button
-  changeEvent: event:/place_tile
+  popEvent: event:/Sound Effects/click_button
+  changeEvent: event:/Sound Effects/place_tile
 --- !u!4 &1881698279
 Transform:
   m_ObjectHideFlags: 0

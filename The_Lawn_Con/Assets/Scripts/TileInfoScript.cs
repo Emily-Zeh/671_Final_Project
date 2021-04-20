@@ -55,11 +55,13 @@ public class TileInfoScript : MonoBehaviour
 
     //FMOD
     [SerializeField, EventRef] public string waterEvent;
+    private FMOD.Studio.EventInstance waterInstance;
     [SerializeField, EventRef] public string mowEvent;
     [SerializeField, EventRef] public string weedEvent;
-    [SerializeField, EventRef] public string fertilizeEvent;
     [SerializeField, EventRef] public string sprayEvent;
     [SerializeField, EventRef] public string infoEvent;
+
+    [SerializeField] [Range(0f, 3f)] public float amount;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,8 @@ public class TileInfoScript : MonoBehaviour
         //tileText.gameObject.SetActive(false);
         dayChange = false;
         startInfo = true;
+
+        waterInstance = FMODUnity.RuntimeManager.CreateInstance(waterEvent);
     }
 
     // Update is called once per frame
@@ -242,72 +246,210 @@ public class TileInfoScript : MonoBehaviour
 
         Debug.Log("effect triggered on "+ currentTile +action);
 
-        if(currentTile == "Grass")
+        if(currentTile == "Grass")  //***EFFECTS ON GRASS TILES***
         {
             if(action == "mow")
             {
+                //audio things
+                if (grassGrassLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(mowEvent, cam.transform.position);
                 grassGrassLevel = 0;
             }
             else if(action == "water")
             {
+                //audio things
+                if(grassWaterLevel <= 2)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
+
                 grassWaterLevel = 5;
                 Debug.Log("Water effect on grass");
 
-                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
             }
             else if(action == "weed")
             {
+                if (grassWeedLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(weedEvent, cam.transform.position);
                 grassWeedLevel = 0;
             }
             else if(action == "herb/pest")
             {
+                if (grassBugLevel >= 2 || grassWeedLevel >= 2)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(sprayEvent, cam.transform.position);
+
                 grassWeedLevel = 0;
                 grassBugLevel = 0;
             }
         }
-        else if(currentTile == "Moss")
+        else if(currentTile == "Moss") //*** EFFECTS ON MOSS TILES
         {
             if(action == "water")
             {
+                if (mossWaterLevel <= 2)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
+
                 mossWaterLevel = 4;
             }
             else if(action == "herb/pest")
             {
+                if (mossBugLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(sprayEvent, cam.transform.position);
+
                 mossBugLevel = 0;
             }
         }
-        else if(currentTile == "Flower")
+        else if(currentTile == "Flower") //*** EFFECTS ON FLOWERS ***
         {
             if (action == "water")
             {
+                if (grassWaterLevel <= 1)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
+
                 flowerWaterLevel = 3;
             }
             else if (action == "weed")
             {
+                if (flowerWeedLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(weedEvent, cam.transform.position);
+
                 flowerWeedLevel = 0;
             }
             else if (action == "herb/pest")
             {
+                if (flowerBugLevel >= 2 || flowerWeedLevel >= 2)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(sprayEvent, cam.transform.position);
+
                 flowerWeedLevel = 0;
                 flowerBugLevel = 0;
             }
         }
-        else if(currentTile == "Wild_Grass")
+        else if(currentTile == "Wild_Grass") //*** EFFECTS ON WILD GRASS ***
         {
             if (action == "mow")
             {
+                if (wildgrassGrassLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(mowEvent, cam.transform.position);
+
                 wildgrassGrassLevel = 0;
             }
             else if (action == "water")
             {
+                if (grassWaterLevel <= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+                RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
+
                 wildgrassWaterLevel = 6;
             }
             else if (action == "weed")
             {
+                if (wildgrassWeedLevel >= 3)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(weedEvent, cam.transform.position);
+
                 wildgrassWeedLevel = 0;
             }
             else if (action == "herb/pest")
             {
+                if (wildgrassBugLevel >= 2 || wildgrassWeedLevel >= 2)
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 3);
+                }
+                else
+                {
+                    RuntimeManager.StudioSystem.setParameterByName("amount", 1.5f);
+                }
+
+                RuntimeManager.PlayOneShot(sprayEvent, cam.transform.position);
+
                 wildgrassWeedLevel = 0;
                 wildgrassBugLevel = 0;
             }

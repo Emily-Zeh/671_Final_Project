@@ -56,7 +56,7 @@ public class ActionManagerScript : TileManagerScript
 
     //FMOD
     [SerializeField, EventRef] public string clockEvent;
-
+    [SerializeField, EventRef] public string fertilizeEvent;
 
 
     // Start is called before the first frame update
@@ -271,6 +271,9 @@ public class ActionManagerScript : TileManagerScript
                         envPoints -= 10;
                         pollutionPoints -= 15;
                         appealPoints += 15;
+
+                        RuntimeManager.StudioSystem.setParameterByName("amount", 2f);
+                        RuntimeManager.PlayOneShot(fertilizeEvent, cam.transform.position);
                     }
                     else if (currentAction == "mow")
                     {
