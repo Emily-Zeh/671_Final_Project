@@ -59,6 +59,8 @@ public class ActionManagerScript : TileManagerScript
     [SerializeField, EventRef] public string fertilizeEvent;
     [SerializeField] public float envSound;
 
+    [SerializeField, EventRef] public string pauseEvent;
+    FMOD.Studio.EventInstance pauseSound;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +77,7 @@ public class ActionManagerScript : TileManagerScript
         pause.SetActive(false);
         envSound = 0f;
         RuntimeManager.StudioSystem.setParameterByName("environment", envSound); ;
-
+        pauseSound = RuntimeManager.CreateInstance(pauseEvent);
     }
 
     // Update is called once per frame
@@ -346,7 +348,16 @@ public class ActionManagerScript : TileManagerScript
             }
 
             pause.SetActive(true);
+  
+            pauseSound.start();
+            
         }
+    }
+
+    public void stopPauseEvent()
+    {
+        pauseSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        
     }
 
     public string GetTileType(Vector3Int gridPos)
@@ -402,7 +413,7 @@ public class ActionManagerScript : TileManagerScript
         }
         else if (tileName == "Wild_Grass")
         {
-            if(action == "herb/pest" || action == "mow" || action == "weed")
+            if(action == "herb/pest" || action == "weed")
             {
                 canUseAct = false;
             }
@@ -471,6 +482,8 @@ public class ActionManagerScript : TileManagerScript
 
     private void Ending()
     {
+        pauseSound = RuntimeManager.CreateInstance(pauseEvent);
+        pauseSound.start();
 
         float Water = 0;
         float Weed = 0;
