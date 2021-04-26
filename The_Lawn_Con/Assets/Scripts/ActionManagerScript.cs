@@ -57,6 +57,7 @@ public class ActionManagerScript : TileManagerScript
     //FMOD
     [SerializeField, EventRef] public string clockEvent;
     [SerializeField, EventRef] public string fertilizeEvent;
+    [SerializeField] public float envSound;
 
 
     // Start is called before the first frame update
@@ -72,11 +73,16 @@ public class ActionManagerScript : TileManagerScript
         EndUI.SetActive(false);
 
         pause.SetActive(false);
+        envSound = 0f;
+        RuntimeManager.StudioSystem.setParameterByName("environment", envSound); ;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        RuntimeManager.StudioSystem.setParameterByName("environment", envSound);
+
         if (actionNum >= 14)
         {
             dayUI.SetActive(false);
@@ -237,15 +243,22 @@ public class ActionManagerScript : TileManagerScript
                         {
                             envPoints += 10;
                             waterPoints -= 10;
+
+                            envSound -= 10;
+                            
                         }
                         else if (lastAction == "herb/pest")
                         {
                             envPoints -= 20;
                             pollutionPoints -= 20;
+
+                            envSound += 25;
                         }
 
                         envPoints += 5;
                         waterPoints -= 5;
+
+                        envSound -= 5;
                         //RuntimeManager.PlayOneShot(waterEvent, cam.transform.position);
                     }
                     else if (currentAction == "herb/pest")
@@ -254,10 +267,14 @@ public class ActionManagerScript : TileManagerScript
                         pollutionPoints -= 50;
                         appealPoints += 25;
 
+                        envSound += 70;
+
                         if (lastAction == "water")
                         {
                             envPoints -= 20;
                             pollutionPoints -= 20;
+
+                            envSound += 40;
                         }
 
                     }
@@ -265,6 +282,8 @@ public class ActionManagerScript : TileManagerScript
                     {
                         envPoints += 10;
                         appealPoints += 10;
+
+                        envSound -= 10;
                     }
                     else if (currentAction == "fertilize")
                     {
@@ -274,11 +293,14 @@ public class ActionManagerScript : TileManagerScript
 
                         RuntimeManager.StudioSystem.setParameterByName("amount", 2f);
                         RuntimeManager.PlayOneShot(fertilizeEvent, cam.transform.position);
+                        envSound += 25;
                     }
                     else if (currentAction == "mow")
                     {
                         appealPoints += 10;
                         pollutionPoints -= 15;
+
+                        envSound += 15;
                     }
 
                     lastAction = currentAction;
@@ -303,6 +325,15 @@ public class ActionManagerScript : TileManagerScript
                 }
             }
 
+            if (envSound < 0)
+            {
+                envSound = 0;
+            }
+
+            if(envSound > 300)
+            {
+                envSound = 300;
+            }
 
         }
 

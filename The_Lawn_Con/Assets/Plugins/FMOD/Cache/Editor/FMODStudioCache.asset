@@ -64,6 +64,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-6687687904509153505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambience/environment
+  m_EditorClassIdentifier: 
+  Name: environment
+  Min: 0
+  Max: 300
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-6356020780846446084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +99,7 @@ MonoBehaviour:
   Path: ../audio/Fmod_Setup/Fmod__LawnCon/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637544659766456315
+  lastModified: 637549842575500758
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -98,11 +118,11 @@ MonoBehaviour:
   Path: ../audio/Fmod_Setup/Fmod__LawnCon/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637544659766496233
+  lastModified: 637549842575550621
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1122
+    Value: 1314
   Exists: 1
 --- !u!114 &-5358803687301259634
 MonoBehaviour:
@@ -127,6 +147,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2165
+--- !u!114 &-4857797222266351321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music/ambience
+  m_EditorClassIdentifier: 
+  Path: event:/music/ambience
+  guid: e046c18c119a7f48aa66621b8a9aa514
+  Banks:
+  - {fileID: -6356020780846446084}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6687687904509153505}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 564000
 --- !u!114 &-3509453835079183090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +217,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 427
+--- !u!114 &-3384819826447343002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambience/environment
+  m_EditorClassIdentifier: 
+  Name: environment
+  Min: 0
+  Max: 300
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-3349372425787800468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,13 +438,14 @@ MonoBehaviour:
   - {fileID: -3509453835079183090}
   - {fileID: -3504398968983977494}
   - {fileID: 8888263540107681695}
+  - {fileID: -4857797222266351321}
   EditorParameters:
   - {fileID: 3622503632934098278}
   MasterBanks:
   - {fileID: -6356020780846446084}
   StringsBanks:
   - {fileID: -5791914850586704195}
-  stringsBankWriteTime: 637544659766496233
+  stringsBankWriteTime: 637549842575550621
   cacheVersion: 6
 --- !u!114 &2329065700830689233
 MonoBehaviour:
@@ -448,6 +513,26 @@ MonoBehaviour:
     data1: 3502237872
     data2: 3890391936
   Exists: 1
+--- !u!114 &3738854850612772528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambience/environment
+  m_EditorClassIdentifier: 
+  Name: environment
+  Min: 0
+  Max: 300
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &3830380411984112474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +736,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2165
+--- !u!114 &8328848754495598645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ambience/environment
+  m_EditorClassIdentifier: 
+  Name: environment
+  Min: 0
+  Max: 300
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &8755221567194869588
 MonoBehaviour:
   m_ObjectHideFlags: 0

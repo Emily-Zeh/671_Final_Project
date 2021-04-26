@@ -12,3 +12,4 @@ Emily Zeh
 "Dogs Barking.wav", by LeandViljoen (https://freesound.org/people/LeandiViljoen/sounds/501719/)
 "Bees.wav", by Benboncan (https://freesound.org/people/Benboncan/sounds/73370/)
 "Bird Whistling, Robin, Single, 13.wav", by InspectorJ (https://freesound.org/people/InspectorJ/sounds/456440/)
+"Wind Chimes, A.wav", by InspectorJ (https://freesound.org/people/InspectorJ/sounds/353194/)
