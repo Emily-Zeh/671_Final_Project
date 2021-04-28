@@ -57,6 +57,9 @@ public class ActionManagerScript : TileManagerScript
     //FMOD
     [SerializeField, EventRef] public string clockEvent;
     [SerializeField, EventRef] public string fertilizeEvent;
+    [SerializeField, EventRef] public string successEvent;
+    [SerializeField, EventRef] public string failureEvent;
+    [SerializeField, EventRef] public string neutralEvent;
     [SerializeField] public float envSound;
 
     [SerializeField, EventRef] public string pauseEvent;
@@ -670,6 +673,7 @@ public class ActionManagerScript : TileManagerScript
 
         if (bad)
         {
+            RuntimeManager.PlayOneShot(failureEvent, cam.transform.position);
             scoreIcons.transform.position = new Vector3(125, 410, 0);
             endingText.text = "Your lawn looks tidy and clean, but at a consequence? Throughout the week, you used " + temp + " and " + temp2 + " the most to keep your lawn looking the way you want, but at a grave cost to " +
                 "the planet. You put your lawn appeal ahead of the environment, together we can change that!\n" +
@@ -678,6 +682,7 @@ public class ActionManagerScript : TileManagerScript
         }
         else if (neutral)
         {
+            RuntimeManager.PlayOneShot(neutralEvent, cam.transform.position);
             scoreIcons.transform.position = new Vector3(125, 383, 0);
             endingText.text = "You managed to maintain a great lawn while avoiding a negative environmental impact, way to go! Your two most used actions were " + temp + " and " + temp2 + ", which were able " +
                 "to maintain your lawn while not contributing to grave levels of pollution. You're on the right track, let's see if you can do better!\n" +
@@ -686,6 +691,7 @@ public class ActionManagerScript : TileManagerScript
         }
         else
         {
+            RuntimeManager.PlayOneShot(successEvent, cam.transform.position);
             scoreIcons.transform.position = new Vector3(125, 410, 0);
             endingText.text = "You managed to maintain a beautiful lawn while helping the planet grow stronger and healthier, that’s awesome! Your two most used actions were " + temp + " and " + temp2 + "," +
                 " the perfect combination for environmental happiness and health. Keep up the great work, and together we can save our Earth!\n" +

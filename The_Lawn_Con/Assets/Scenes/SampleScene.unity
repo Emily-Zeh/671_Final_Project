@@ -4020,6 +4020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004732303}
+  - component: {fileID: 1004732304}
   m_Layer: 0
   m_Name: Bad_Ending
   m_TagString: Untagged
@@ -4041,6 +4042,29 @@ Transform:
   m_Father: {fileID: 963006116}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004732304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004732302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Results/Failure
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1006784832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,6 +5115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215212008}
+  - component: {fileID: 1215212009}
   m_Layer: 0
   m_Name: Neutral_Ending
   m_TagString: Untagged
@@ -5112,6 +5137,29 @@ Transform:
   m_Father: {fileID: 963006116}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215212009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215212007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Results/Failure
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1218825719
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,6 +5241,9 @@ MonoBehaviour:
   scoreIcons: {fileID: 846652941}
   clockEvent: event:/Sound Effects/clock
   fertilizeEvent: event:/Sound Effects/fertilizing
+  successEvent: event:/Results/Success
+  failureEvent: event:/Results/Failure
+  neutralEvent: event:/Results/Neutral
   envSound: 0
   pauseEvent: snapshot:/Pause
 --- !u!1 &1245761833
@@ -8192,6 +8243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1927249925}
+  - component: {fileID: 1927249926}
   m_Layer: 0
   m_Name: Good_Ending
   m_TagString: Untagged
@@ -8213,6 +8265,29 @@ Transform:
   m_Father: {fileID: 963006116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927249926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927249924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Results/Success
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1933422496
 GameObject:
   m_ObjectHideFlags: 0
