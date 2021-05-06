@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="ParameterPreset" id="{77bf978b-9acb-4245-b46f-873ec644d70a}">
 		<property name="name">
-			<value>environment</value>
+			<value>decrease</value>
 		</property>
 		<relationship name="folder">
 			<destination>{182a4088-e406-4f22-8d19-462a72ecd273}</destination>
@@ -13,10 +13,16 @@
 	</object>
 	<object class="GameParameter" id="{eacb391b-0065-4097-847d-4a584a881d6c}">
 		<property name="maximum">
-			<value>300</value>
+			<value>400</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
 		</property>
 		<property name="initialValue">
 			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
 		</property>
 	</object>
 </objects>

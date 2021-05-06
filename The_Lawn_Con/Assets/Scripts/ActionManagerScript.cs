@@ -64,6 +64,7 @@ public class ActionManagerScript : TileManagerScript
 
     [SerializeField, EventRef] public string pauseEvent;
     FMOD.Studio.EventInstance pauseSound;
+    private bool endingPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -79,14 +80,14 @@ public class ActionManagerScript : TileManagerScript
 
         pause.SetActive(false);
         envSound = 0f;
-        RuntimeManager.StudioSystem.setParameterByName("environment", envSound); ;
+        RuntimeManager.StudioSystem.setParameterByName("decrease", envSound);
         pauseSound = RuntimeManager.CreateInstance(pauseEvent);
     }
 
     // Update is called once per frame
     void Update()
     {
-        RuntimeManager.StudioSystem.setParameterByName("environment", envSound);
+        RuntimeManager.StudioSystem.setParameterByName("decrease", envSound);
 
         if (actionNum >= 14)
         {
@@ -335,9 +336,9 @@ public class ActionManagerScript : TileManagerScript
                 envSound = 0;
             }
 
-            if(envSound > 300)
+            if(envSound > 400)
             {
-                envSound = 300;
+                envSound = 400;
             }
 
         }
@@ -416,10 +417,12 @@ public class ActionManagerScript : TileManagerScript
         }
         else if (tileName == "Wild_Grass")
         {
-            if(action == "herb/pest" || action == "weed")
+            /*
+            if(action == "weed")
             {
                 canUseAct = false;
             }
+            */
         }
         else
         {
@@ -673,7 +676,12 @@ public class ActionManagerScript : TileManagerScript
 
         if (bad)
         {
-            RuntimeManager.PlayOneShot(failureEvent, cam.transform.position);
+            if (!endingPlayed)
+            {
+                RuntimeManager.PlayOneShot(failureEvent, cam.transform.position);
+                endingPlayed = true;
+            }
+            
             scoreIcons.transform.position = new Vector3(125, 410, 0);
             endingText.text = "Your lawn looks tidy and clean, but at a consequence? Throughout the week, you used " + temp + " and " + temp2 + " the most to keep your lawn looking the way you want, but at a grave cost to " +
                 "the planet. You put your lawn appeal ahead of the environment, together we can change that!\n" +
@@ -682,7 +690,11 @@ public class ActionManagerScript : TileManagerScript
         }
         else if (neutral)
         {
-            RuntimeManager.PlayOneShot(neutralEvent, cam.transform.position);
+            if (!endingPlayed)
+            {
+                RuntimeManager.PlayOneShot(neutralEvent, cam.transform.position);
+                endingPlayed = true;
+            }
             scoreIcons.transform.position = new Vector3(125, 383, 0);
             endingText.text = "You managed to maintain a great lawn while avoiding a negative environmental impact, way to go! Your two most used actions were " + temp + " and " + temp2 + ", which were able " +
                 "to maintain your lawn while not contributing to grave levels of pollution. You're on the right track, let's see if you can do better!\n" +
@@ -691,7 +703,11 @@ public class ActionManagerScript : TileManagerScript
         }
         else
         {
-            RuntimeManager.PlayOneShot(successEvent, cam.transform.position);
+            if (!endingPlayed)
+            {
+                RuntimeManager.PlayOneShot(successEvent, cam.transform.position);
+                endingPlayed = true;
+            }
             scoreIcons.transform.position = new Vector3(125, 410, 0);
             endingText.text = "You managed to maintain a beautiful lawn while helping the planet grow stronger and healthier, that’s awesome! Your two most used actions were " + temp + " and " + temp2 + "," +
                 " the perfect combination for environmental happiness and health. Keep up the great work, and together we can save our Earth!\n" +

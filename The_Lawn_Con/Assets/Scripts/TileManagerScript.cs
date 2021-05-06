@@ -31,6 +31,8 @@ public class TileManagerScript : MonoBehaviour
 
     public int type = 0;
 
+    private bool workableTilePlaced = false;
+
 
     public Vector3Int pos;
     // Start is called before the first frame update
@@ -85,18 +87,22 @@ public class TileManagerScript : MonoBehaviour
                     break;
                 case 1:
                     tileMap.SetTile(gridPos, grass);
+                    workableTilePlaced = true;
                     break;
                 case 2:
                     tileMap.SetTile(gridPos, moss);
+                    workableTilePlaced = true;
                     break;
                 case 3:
                     tileMap.SetTile(gridPos, flower);
+                    workableTilePlaced = true;
                     break;
                /* case 4:
                     tileMap.SetTile(gridPos, garden);
                     break;*/
                 case 4:
                     tileMap.SetTile(gridPos, wild_grass);
+                    workableTilePlaced = true;
                     break;
                 case 5:
                     tileMap.SetTile(gridPos, path);
@@ -206,11 +212,15 @@ public class TileManagerScript : MonoBehaviour
 
     public void Finish()
     {
-        start = false;
-        AssignScript();
-        startUI.SetActive(false);
-        dayUI.SetActive(true);
-        feedbackUI.SetActive(true);
+        if (workableTilePlaced)
+        {
+            start = false;
+            AssignScript();
+            startUI.SetActive(false);
+            dayUI.SetActive(true);
+            feedbackUI.SetActive(true);
+        }
+        
     }
 
 }
